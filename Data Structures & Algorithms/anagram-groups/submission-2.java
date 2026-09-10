@@ -1,23 +1,28 @@
 class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        
-        HashMap<Integer,Integer> map=new HashMap();
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List> map = new HashMap<>();
 
-        for( int i=0;i<nums.length;i++){
+        for (String s : strs) {
+            int[] count = new int[26];
+            for (char c : s.toCharArray()) {
+                count[c - 'a']++;
+            }
 
-            int diffrence = target-nums[i];
+            StringBuilder sb = new StringBuilder();
 
+            for (int i : count) {
+                sb.append("#");
+                sb.append(i);
+            }
 
-//loop thorugh if we have diffrence retun it or else put it 
-             if(map.containsKey(diffrence)){
-                return new int[] {map.get(diffrence),i};
-             }
-//put it when not present 
-                map.put(nums[i], i);
+            String key = sb.toString();
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<String>());
+            }
+
+            map.get(key).add(s);
         }
 
-            return new int[] {};
-    
-
+        return new ArrayList(map.values());
     }
 }
