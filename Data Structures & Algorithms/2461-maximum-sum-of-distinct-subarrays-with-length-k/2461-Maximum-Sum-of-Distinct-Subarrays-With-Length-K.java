@@ -3,36 +3,35 @@ class Solution {
 
     int size = nums.length;
     int i = 0;
-    int j = 0;
+   
 
-    int maxSum = 0;
-    int sum = 0;
+    long maxSum = 0;
+    long  sum = 0;
 
-    HashSet<Integer>seen =new HashSet<>();
+    HashSet<Integer> seen = new HashSet<>();
 
-    while (j < size) {
+    for (int j = 0; j < nums.length; j++) {
 
+      while (seen.contains(nums[j])) {
 
-      while(seen.contains(nums[j])){
-        sum=sum-nums[i];
         seen.remove(nums[i]);
+        sum = sum - nums[i];
         i++;
       }
 
-      sum=sum+nums[j];
       seen.add(nums[j]);
-    if (j - i + 1 == k) {
+      sum = sum + nums[j];
+
+      if (j - i + 1 == k) {
         maxSum = Math.max(maxSum, sum);
+        seen.remove(nums[i]);
         sum = sum - nums[i];
-        j++;
+        
         i++;
       }
-      else{
-        j++;
-      }
+      
     }
 
-    return maxSum;
+  return maxSum;
 
-  }
-}
+}}
