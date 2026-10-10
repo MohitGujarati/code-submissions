@@ -3,6 +3,7 @@ class Solution {
 
     int size = nums.length;
     int i = 0;
+    int j=0;
    
 
     long maxSum = 0;
@@ -10,7 +11,7 @@ class Solution {
 
     HashSet<Integer> seen = new HashSet<>();
 
-    for (int j = 0; j < nums.length; j++) {
+    while ( j < nums.length) {
 
       while (seen.contains(nums[j])) {
 
@@ -29,6 +30,8 @@ class Solution {
         
         i++;
       }
+
+      j++;
       
     }
 
