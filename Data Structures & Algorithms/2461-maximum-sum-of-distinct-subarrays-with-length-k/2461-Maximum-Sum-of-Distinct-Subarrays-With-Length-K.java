@@ -3,23 +3,18 @@ class Solution {
 
     int size = nums.length;
     int i = 0;
-    int j=0;
-   
-
+    int j = 0;
     long maxSum = 0;
-    long  sum = 0;
-
+    long sum = 0;
     HashSet<Integer> seen = new HashSet<>();
 
-    while ( j < nums.length) {
+    while (j < nums.length) {
 
       while (seen.contains(nums[j])) {
-
         seen.remove(nums[i]);
         sum = sum - nums[i];
         i++;
       }
-
       seen.add(nums[j]);
       sum = sum + nums[j];
 
@@ -27,14 +22,21 @@ class Solution {
         maxSum = Math.max(maxSum, sum);
         seen.remove(nums[i]);
         sum = sum - nums[i];
-        
         i++;
       }
-
       j++;
-      
     }
 
-  return maxSum;
+    return maxSum;
+  }
+}
 
-}}
+/*
+      //check if the current j is present in the haset 
+      //if its there remove i from set and subtract from total sum
+    // then add j and update the  sum
+    //if it matches the required window 
+    //check its sum save the max sum
+    //remove i from set and remove from sum then increase the pointer and incerease j
+      
+*/
