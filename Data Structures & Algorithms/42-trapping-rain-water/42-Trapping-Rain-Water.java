@@ -1,34 +1,40 @@
 class Solution {
-    public int trap(int[] height) {
-        if (height == null || height.length == 0) return 0;
-
-        int left = 0;
-        int right = height.length - 1;
-
-        int leftMax = height[left];
-        int rightMax = height[right];
-
+  public int trap(int[] height) {
         int totalWater = 0;
+        
+        // 1. Initialize your Monotonic Stack engine to store INDICES[cite: 2]
+        Deque<Integer> stack = new ArrayDeque<>(); 
 
-        // Opposite Direction Pointers moving inward
-        while (left < right) {
+        // 2. Iterate through every building
+        for (int i = 0; i < height.length; i++) {
             
-            // Step the side with the smaller max inward
-            if (leftMax < rightMax) {
-                left++;
-                // Update the max wall seen so far on the left
-                leftMax = Math.max(leftMax, height[left]);
-                // Calculate water trapped above the current building
-                totalWater += leftMax - height[left]; 
-            } else {
-                right--;
-                // Update the max wall seen so far on the right
-                rightMax = Math.max(rightMax, height[right]);
-                // Calculate water trapped above the current building
-                totalWater += rightMax - height[right]; 
+            // 3. THE PUDDLE ENGINE: While we find a taller Right Wall
+            while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
+                
+                // Pop the shorter building (This is the Bottom of the puddle)
+                int bottom = stack.pop(); 
+                
+                // If the stack is empty, there is no Left Wall to hold the water! 
+                // It just spills out, so we break out of the while loop.
+                if (stack.isEmpty()) {
+                    break;
+                }
+                
+                // The new top of the stack is guaranteed to be our Left Wall
+                int leftWall = stack.peek();
+                
+                // 4. Calculate dimensions of this specific horizontal layer
+                int width = i - leftWall - 1;
+                int puddleHeight = Math.min(height[i], height[leftWall]) - height[bottom];
+                
+                // 5. Add the trapped water for this layer to the total
+                totalWater += width * puddleHeight;
             }
-      }
+            
+            // 6. Push the current index onto the stack to act as a potential wall for future buildings[cite: 2]
+            stack.push(i); 
+        }
 
         return totalWater;
-    }
+  }
 }
