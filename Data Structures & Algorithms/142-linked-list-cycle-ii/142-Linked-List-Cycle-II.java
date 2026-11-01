@@ -17,8 +17,8 @@ public class Solution {
 
     while (fast != null && fast.next != null) {
 
-      fast = fast.next.next;
       slow = slow.next;
+      fast = fast.next.next;
 
       if (slow == fast) {
         slow = head;
@@ -30,7 +30,6 @@ public class Solution {
 
         return slow;
       }
-
     }
 
     return null;
