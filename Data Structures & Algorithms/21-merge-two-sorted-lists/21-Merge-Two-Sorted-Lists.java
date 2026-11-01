@@ -16,7 +16,7 @@ class Solution {
     if (list2 == null)
       return list1;
 
-    ListNode dummy = new ListNode(-1);
+    ListNode dummy = new ListNode();
     ListNode curr = dummy;
 
     while (list1 != null && list2 != null) {
