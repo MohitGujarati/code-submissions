@@ -16,16 +16,20 @@ class Solution {
       if(head == null || head.next==null){
         return head;
       }
+//assing them 
 
       ListNode start =head;
       ListNode mid =getMid(head);
 
       ListNode end = mid.next;
-      mid.next=null;
 
+      mid.next=null; //Link
 
+//sorts halves recursively 
       start=sortList(start);
       end=sortList(end);
+
+//then we return by merging
 
       return mergeTwoList(start,end);
         
