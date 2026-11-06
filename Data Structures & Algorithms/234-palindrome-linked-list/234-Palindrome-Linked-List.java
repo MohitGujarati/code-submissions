@@ -30,6 +30,7 @@ class Solution {
 
     while (curr != null) {
       next = curr.next;
+      curr.next=prev;
       prev = curr;
       curr = next;
     }
@@ -44,21 +45,21 @@ class Solution {
     }
 
       ListNode middle=middleNode(head);
-      ListNode secondHalf=reverseList(middle);
+      ListNode secondHead=reverseList(middle);
 
-      ListNode restoredHead=secondHalf;
+      ListNode restoredHead=secondHead;
 
       boolean isPlain=true;
 
       //compare botht the halfs
 
-      while(head!=null && secondHalf != null){
-        if(head.val != secondHalf.val){
+      while(head!=null && secondHead != null){
+        if(head.val != secondHead.val){
           isPlain=false;
           break;
       }
       head=head.next;
-      secondHalf=secondHalf.next;
+      secondHead=secondHead.next;
       }
       reverseList(restoredHead);
 
