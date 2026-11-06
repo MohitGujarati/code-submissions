@@ -20,7 +20,6 @@ class Solution {
 
       ListNode start =head;
       ListNode mid =getMid(head);
-
       ListNode end = mid.next;
 
       mid.next=null; //Link
