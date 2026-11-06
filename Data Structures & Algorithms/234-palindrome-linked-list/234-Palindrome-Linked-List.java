@@ -61,7 +61,6 @@ class Solution {
       head=head.next;
       secondHead=secondHead.next;
       }
-      reverseList(restoredHead);
 
        return isPlain;
 
