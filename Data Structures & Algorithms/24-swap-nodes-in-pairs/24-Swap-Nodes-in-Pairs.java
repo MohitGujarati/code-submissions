@@ -20,11 +20,11 @@ class Solution {
         ListNode p1=prev.next;
         ListNode p2=p1.next;
 
-        p1.next=p2.next;
-        p2.next=p1;
-        prev.next=p2;
+        p1.next=p2.next;//connect to first node to rest 
+        p2.next=p1;//Reverse current pair
+        prev.next=p2;//connect previous 
 
-        prev=p1;
+        prev=p1;//   move to p1 
 
       }
         return dummy.next;
