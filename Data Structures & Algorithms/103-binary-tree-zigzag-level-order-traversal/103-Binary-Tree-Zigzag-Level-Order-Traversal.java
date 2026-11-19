@@ -48,13 +48,12 @@ class Solution {
       }
 
       if (result.size() % 2 != 0) {
+//we have to save the elements inside the level as per question NOT  with result like we previously did 
+        int start = 0;
+        int end = level.size() - 1;
 
-      
-
-          int start = 0;
-          int end = level.size() - 1;
-  while (start < end) {
-          int  temp ;
+        while (start < end) {
+          int temp;
 
           temp = level.get(start);
 
