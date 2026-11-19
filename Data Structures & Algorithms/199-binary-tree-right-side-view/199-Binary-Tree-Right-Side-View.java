@@ -30,8 +30,6 @@ class Solution {
 
       int levelSize = queue.size();
 
-      List<Integer> level = new ArrayList<>();
-
       for (int i = 0; i < levelSize; i++) {
 
         TreeNode curr = queue.poll();
@@ -40,7 +38,7 @@ class Solution {
           result.add(curr.val);
         }
 
-        level.add(curr.val);
+     
 
         if (curr.left != null) {
           queue.offer(curr.left);
