@@ -21,7 +21,6 @@ class Solution {
 
     height(root);
     return maxDiameter;
-
   }
 
   private int height(TreeNode root) {
@@ -36,3 +35,9 @@ class Solution {
     return 1 + Math.max(left, right);
   }
 }
+
+/*
+Think of it this way:
+- left + right measures the longest path passing through the current node.
+- 1 + Math.max(left, right) finds the height to return to the parent.
+*/
