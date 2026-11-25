@@ -21,19 +21,22 @@ class Solution {
         return;
       }
 
+//save original children 
+
       TreeNode left =root.left;
       TreeNode right =root.right;
 
-
+//connect the previous node to current 
       if(prev!=null){
         prev.right=root;
         prev.left=null;
       }
 
+//remeber the current node 
       prev=root;
       root.left=null;
 
-
+//traversal
       flatten(left);
       flatten(right);
         
